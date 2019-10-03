@@ -56,6 +56,14 @@
     --global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
     --global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
     --global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
+
+    /*global input styles*/
+    --global-input-backgroundColor: White;
+    --global-input-color: var(--global-color-neutral-xxxx-dark);
+    --global-input-borderColor: var(--global-color-neutral-xxx-light);
+    --global-input-hover-borderColor: var(--global-color-neutral-xx-light);
+    --global-input-focus-borderColor: var(--global-color-alpha);
+    --global-input-focus-boxShadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
 }
 
 /*------------------------------------*\
@@ -477,7 +485,7 @@ input::placeholder {
 /*
     Object: Hide accessible
     ---
-    Accessibly hide any element
+    Accessiblyo-hide-accessible hide any element
 */
 
 .o-hide-accessible {
@@ -599,12 +607,13 @@ input::placeholder {
 .c-input {
     -webkit-appearance: none;
     -moz-appearance: none;
+    --input-border-width: var(--global-borderWidth);
     appearance: none;
     width: 100%;
-    border: var(--global-borderWidth) solid var(--global-color-neutral-xxx-light);
+    border: var(--global-borderWidth) solid var(--global-input-borderColor);
     border-radius: var(--global-borderRadius);
     color: var(--global-color-neutral-xxxx-dark);
-    background-color: White;
+    background-color: var(--global-input-backgroundColor);
     font-family: inherit;
     font-size: 16px;
     line-height: calc(var(--global-baseline) * 3);
@@ -614,13 +623,13 @@ input::placeholder {
 }
 
 .c-input:hover {
-    border-color: var(--global-color-neutral-xx-light);
+    border-color: var(--global-input-hover-borderColor);
 }
 
 .c-input:focus,
 .c-input:active {
-    border-color: var(--global-color-alpha);
-    box-shadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
+    border-color: var(--global-input-focus-borderColor);
+    box-shadow: var(--global-input-focus-boxShadow);
 }
 
 /* option input for checkboxes and radio buttons */
@@ -679,6 +688,53 @@ input::placeholder {
     background-color: var(--global-color-alpha-dark);
     box-shadow: none;
 }
+
+.c-option--hidden:checked + .c-custom-option {
+    border-radius: var(--global-borderRadius);
+  }
+
+  .c-option--hidden:checked + .c-custom-option .c-custom-option__symbol {
+    opacity: 1;
+    transition: ease-in 100ms;
+  }
+
+  .c-custom-option__fake-input{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: calc(var(--global-baseline) * 2);
+      height: calc(var(--global-baseline) * 2);
+      border: var(--global-borderWidth) solid var(--global-input-borderColor);
+      margin-right: var(--global-whitespace-sm);
+      border-radius: var(--global-borderRadius);
+  }
+
+  .c-custom-option__fake-input--radio{
+      border-radius: 100%;
+  }
+  .c-custom-option__symbol{
+      opacity: 0;
+      transition: ease-out 100ms;
+  }
+
+  .c-custom-option__fake-input--checkbox .c-custom-option__symbol {
+    width: 10px;
+    height: 10px;
+    fill: var(--global-color-alpha);
+     
+  }
+  
+  .c-custom-option__fake-input--radio .c-custom-option__symbol {
+    width: 6px;
+    height: 6px;
+    background-color: var(--global-color-alpha);
+    border-radius: 100%;
+  }
+
+  .c-custom-option{
+      display: flex;
+      align-items: center;
+  }
 
 /*------------------------------------*\
 #UTILITIES
