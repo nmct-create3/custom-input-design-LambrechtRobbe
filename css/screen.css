@@ -638,6 +638,10 @@ input::placeholder {
     margin-right: var(--global-whitespace-sm);
 }
 
+.c-option-list__item{
+    margin-bottom: calc(var(--global-baseline) * 1.5);
+}
+
 /*
     Component: Label
     ---
@@ -690,51 +694,73 @@ input::placeholder {
 }
 
 .c-option--hidden:checked + .c-custom-option {
+  border-radius: var(--global-borderRadius);
+}
+
+.c-option--hidden:checked + .c-custom-option .c-custom-option__symbol {
+  opacity: 1;
+  transform: none;
+}
+
+.c-option--hidden:active + .c-custom-option .c-custom-option__fake-input,
+.c-option--hidden:focus + .c-custom-option .c-custom-option__fake-input {
+  border-color: var(--global-input-focus-borderColor);
+  box-shadow: var(--global-input-focus-boxShadow);
+}
+
+.c-custom-option__fake-input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--global-baseline) * 2);
+    height: calc(var(--global-baseline) * 2);
+    border: var(--global-borderWidth) solid var(--global-input-borderColor);
+    margin-right: var(--global-whitespace-sm);
     border-radius: var(--global-borderRadius);
-  }
+}
 
-  .c-option--hidden:checked + .c-custom-option .c-custom-option__symbol {
-    opacity: 1;
-    transition: ease-in 100ms;
-  }
+.c-custom-option__fake-input--radio{
+    border-radius: 100%;
+}
+.c-custom-option__symbol{
+    opacity: 0;
+    transform: scale(.5);
+    transition: all var(--global-transitionTiming-alpha);
+}
 
-  .c-custom-option__fake-input{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: calc(var(--global-baseline) * 2);
-      height: calc(var(--global-baseline) * 2);
-      border: var(--global-borderWidth) solid var(--global-input-borderColor);
-      margin-right: var(--global-whitespace-sm);
-      border-radius: var(--global-borderRadius);
-  }
-
-  .c-custom-option__fake-input--radio{
-      border-radius: 100%;
-  }
-  .c-custom-option__symbol{
-      opacity: 0;
-      transition: ease-out 100ms;
-  }
-
-  .c-custom-option__fake-input--checkbox .c-custom-option__symbol {
+.c-custom-option__fake-input--checkbox .c-custom-option__symbol {
     width: 10px;
     height: 10px;
-    fill: var(--global-color-alpha);
-     
-  }
+    fill: var(--global-color-alpha);     
+}
   
-  .c-custom-option__fake-input--radio .c-custom-option__symbol {
-    width: 6px;
-    height: 6px;
-    background-color: var(--global-color-alpha);
-    border-radius: 100%;
-  }
+.c-custom-option__fake-input--radio .c-custom-option__symbol {
+  width: 6px;
+  height: 6px;
+  background-color: var(--global-color-alpha);
+  border-radius: 100%;
+}
 
-  .c-custom-option{
-      display: flex;
-      align-items: center;
-  }
+.c-custom-option{
+    display: flex;
+    align-items: center;
+}
+
+.c-custom-toggle__fake-input{
+    display: block;
+    align-items: center;
+    justify-content: center;
+    width: calc(var(--global-baseline) * 6);
+    height: calc(var(--global-baseline) * 3);
+    margin-right: calc(var(--global-baseline) * 2);
+    background-color: var();
+    border-radius: 32px;
+    border: 1px solid var(--global-input-borderColor);
+}
+
+.c-custom-toggle__fake-input::after{
+    content: '';
+}
 
 /*------------------------------------*\
 #UTILITIES
